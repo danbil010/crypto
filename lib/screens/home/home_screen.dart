@@ -269,8 +269,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding:  EdgeInsets.symmetric(horizontal:  AppPadding.hp12, vertical: AppPadding.vp8),
               child: Column(
+                spacing: AppSpacing.vs8,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
