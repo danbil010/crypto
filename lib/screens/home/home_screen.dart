@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
-                            spacing: AppSpacing.hs12,
+                            spacing: AppSpacing.hs24,
                             children: [
                               Image.asset(
                                 AppAssets.images.logo,
