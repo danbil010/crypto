@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Container(
                     width: double.infinity,
-                    height: AppSize.h460,
+                    height: AppSize.h340,
                     padding: EdgeInsets.only(top: AppPadding.vp48),
                     decoration: BoxDecoration(
                         image: DecorationImage(
@@ -146,11 +146,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Positioned(
-                    bottom: 2,
+                    bottom: 30,
                     left: 10,
                     right: 10,
                     child: Container(
-                      height: AppSize.h320,
+                      height: AppSize.h300,
                       width: AppSize.w950,
                       decoration: BoxDecoration(
                           color: AppColor.primary,
@@ -161,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: AppPadding.vp16,
-                                vertical: AppPadding.vp24),
+                                vertical: AppPadding.vp16),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               spacing: AppSpacing.hs24,
