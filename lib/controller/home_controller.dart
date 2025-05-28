@@ -5,10 +5,9 @@ import 'package:crypto_app/services/home_service.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
+  final HomeService _homeService = HomeService();
 
-    final HomeService _homeService = HomeService();
-
-      List<AssetModel> assetsList = [
+  List<AssetModel> assetsList = [
     AssetModel(
         profile: AppAssets.icons.bitcoin,
         title: 'Bitcoin(BTC)',
@@ -21,24 +20,18 @@ class HomeController extends GetxController {
         ratio: '2.35'),
   ];
 
-
   RxList<TransactionsModel> transactions = <TransactionsModel>[].obs;
   RxBool isLoading = false.obs;
 
-
-   @override
+  @override
   void onInit() {
     super.onInit();
     fetchTransactions();
   }
 
-
-
   void fetchTransactions() async {
     isLoading.value = true;
     transactions.value = await _homeService.getTransactions();
-
-    
     isLoading.value = false;
   }
 }

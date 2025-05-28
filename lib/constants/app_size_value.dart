@@ -138,6 +138,10 @@ class AppSize {
   static double get h45 => Get.height * 0.045; // 40px
   static double get h50 => Get.height * 0.050; // 40px
   static double get h48 => Get.height * 0.048; // 48px
+  static double get h52 => Get.height * 0.052; // 52px
+  static double get h53 => Get.height * 0.053; // 56px
+  static double get h54 => Get.height * 0.054; // 56px
+  static double get h55 => Get.height * 0.055; // 56px
   static double get h56 => Get.height * 0.056; // 56px
   static double get h60 => Get.height * 0.060; // 56px
   static double get h62 => Get.height * 0.062; // 64px

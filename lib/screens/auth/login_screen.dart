@@ -7,7 +7,6 @@ import 'package:crypto_app/constants/app_styles.dart';
 import 'package:crypto_app/controller/auth_controller.dart';
 import 'package:crypto_app/screens/auth/signup_screen.dart';
 import 'package:crypto_app/utils/validator.dart';
-import 'package:crypto_app/widgets/custom_app_bar.dart';
 import 'package:crypto_app/widgets/custom_button.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -70,6 +69,9 @@ Widget build(BuildContext context) {
                       labelText: 'Email',
                       hintText: 'Enter email address',
                       validator: Validators.validateEmail,
+                      textInputAction: TextInputAction.next,
+                      focusNode: authController.loginEmailFocus,
+                      nextFocusNode: authController.passwordFocus,
                     ),
 
                     // Password Field
@@ -79,6 +81,8 @@ Widget build(BuildContext context) {
                       hintText: 'Enter password',
                       isPasswordField: true,
                       validator: Validators.validatePassword,
+                      textInputAction: TextInputAction.done,
+                      focusNode: authController.loginPasswordFocus,
                     ),
 
                  

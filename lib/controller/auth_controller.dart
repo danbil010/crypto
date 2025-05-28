@@ -26,6 +26,8 @@ class AuthController extends GetxController {
   // Add FocusNodes
   final fullNameFocus = FocusNode();
   final emailFocus = FocusNode();
+   final loginEmailFocus = FocusNode();
+   final loginPasswordFocus = FocusNode();
   final phoneFocus = FocusNode();
   final passwordFocus = FocusNode();
   final confirmPasswordFocus = FocusNode();
@@ -36,6 +38,7 @@ class AuthController extends GetxController {
   void onClose() {
     fullNameFocus.dispose();
     emailFocus.dispose();
+    
     phoneFocus.dispose();
     passwordFocus.dispose();
     confirmPasswordFocus.dispose();
@@ -63,36 +66,48 @@ class AuthController extends GetxController {
   }
 
   Future<void> signup() async {
-  isLoading.value = true;
-  try {
-    UserCredential userCredential = await _authService.signUp(
-      emailController.text.trim(),
-      passwordController.text.trim(),
-    );
-
-    // Get UID from userCredential
-    final uid = userCredential.user?.uid;
-    if (uid != null) {
-      // Save user data in Firestore
-      await _authService.saveUserToFirestore(
-        uid: uid,
-        fullName: fullNameController.text.trim(),
-        email: emailController.text.trim(),
-        phone: phoneNumberController.text.trim(),
+    isLoading.value = true;
+    try {
+      UserCredential userCredential = await _authService.signUp(
+        emailController.text.trim(),
+        passwordController.text.trim(),
       );
 
-      Get.offAll(() => LoginScreen());
-    } else {
-      SnackbarHelper.showError(AppStrings.signupSucceedButUserIdNull);
-    }
-  } catch (e) {
-    if (kDebugMode) {
-      print('${AppStrings.signupError}: $e');
-    }
-    SnackbarHelper.showError('${AppStrings.signupFailed} $e');
-  } finally {
-    isLoading.value = false;
-  }
-}
+      // Get UID from userCredential
+      final uid = userCredential.user?.uid;
+      if (uid != null) {
+        // Save user data in Firestore
+        await _authService.saveUserToFirestore(
+          uid: uid,
+          fullName: fullNameController.text.trim(),
+          email: emailController.text.trim(),
+          phone: phoneNumberController.text.trim(),
+        );
 
+        Get.offAll(() => LoginScreen());
+      } else {
+        SnackbarHelper.showError(AppStrings.signupSucceedButUserIdNull);
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('${AppStrings.signupError}: $e');
+      }
+      SnackbarHelper.showError('${AppStrings.signupFailed} $e');
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future signout() async {
+    try {
+      await _authService.logout();
+      await SharedPreferenceHelper.clear();
+      Get.offAll(() => LoginScreen());
+    } catch (e) {
+      if (kDebugMode) {
+        print('${AppStrings.errorDuringSignOut}: $e');
+      }
+      SnackbarHelper.showError('${AppStrings.errorDuringSignOut}: $e');
+    }
+  }
 }

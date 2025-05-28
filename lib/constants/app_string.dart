@@ -115,4 +115,6 @@ class AppStrings {
   static const String viewAll = "View All";
 
   static const String transactions = "Transactions";
+
+  static const String errorDuringSignOut = "Error during sign out";
 }

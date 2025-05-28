@@ -4,6 +4,7 @@ import 'package:crypto_app/constants/app_fonts.dart';
 import 'package:crypto_app/constants/app_size_value.dart';
 import 'package:crypto_app/constants/app_string.dart';
 import 'package:crypto_app/constants/app_styles.dart';
+import 'package:crypto_app/controller/auth_controller.dart';
 import 'package:crypto_app/controller/home_controller.dart';
 import 'package:crypto_app/models/assets_model.dart';
 import 'package:crypto_app/models/transactions_model.dart';
@@ -21,6 +22,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   HomeController homeController = Get.put(HomeController());
+  AuthController authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -92,17 +94,29 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Icons.notifications,
                               ),
                             ),
-                            Container(
-                              width: AppSize.h56,
-                              height: AppSize.h56,
-                              margin: EdgeInsets.only(right: AppMargin.hm12),
-                              decoration: BoxDecoration(
-                                  color: AppColor.white,
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          AppAssets.images.profile))),
-                              clipBehavior: Clip.antiAlias,
+                            Obx(()=>
+                               InkWell(
+                                onTap: () {
+                                 
+                                  authController.signout();
+                                },
+                                child: Container(
+                                  width: AppSize.h53,
+                                  height: AppSize.h53,
+                                  margin: EdgeInsets.only(right: AppMargin.hm12),
+                                  decoration: BoxDecoration(
+                                      color: AppColor.white,
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                          image:  AssetImage(
+                                              AppAssets.images.profile))),
+                                  clipBehavior: Clip.antiAlias,
+                                  child:  authController.isLoading.value ? CustomAppLoader(
+                                    size: AppSize.h40,
+                                    color: AppColor.primary,
+                                  ) : null,
+                                ),
+                              ),
                             ),
                           ],
                         )

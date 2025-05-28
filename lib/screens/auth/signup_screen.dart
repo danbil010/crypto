@@ -89,6 +89,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         hintText: 'Enter phone number',
                         validator: Validators.validatePhoneNumber,
                         textInputAction: TextInputAction.next,
+                        keyboardType: TextInputType.phone,
                         focusNode: authController.phoneFocus,
                         nextFocusNode: authController.passwordFocus,
                       ),
@@ -98,6 +99,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         hintText: 'Enter password',
                         isPasswordField: true,
                         validator: Validators.validatePassword,
+                        keyboardType: TextInputType.visiblePassword,
                         textInputAction: TextInputAction.next,
                         focusNode: authController.passwordFocus,
                         nextFocusNode: authController.confirmPasswordFocus,
@@ -108,9 +110,14 @@ class _SignupScreenState extends State<SignupScreen> {
                         hintText: 'Enter confirm password',
                         isPasswordField: true,
                         textInputAction: TextInputAction.done,
+                        keyboardType: TextInputType.visiblePassword,
+                        
                         focusNode: authController.confirmPasswordFocus,
                         validator: (value) {
-                         
+                          if (value != authController.passwordController.text) {
+                            return 'Passwords do not match';
+                          }
+                          return Validators.validatePassword(value);
                         },
                       ),
                     ],
