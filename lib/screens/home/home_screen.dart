@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 4.0),
+                          padding: EdgeInsets.only(top: AppPadding.vp6),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -86,35 +86,57 @@ class _HomeScreenState extends State<HomeScreen> {
                           spacing: AppSpacing.hs24,
                           children: [
                             Container(
-                              padding: EdgeInsets.all(AppPadding.vp12),
+                               width: AppSize.h53,
+                              height: AppSize.h53,
                               decoration: BoxDecoration(
                                   color: AppColor.white,
                                   shape: BoxShape.circle),
-                              child: Icon(
-                                Icons.notifications,
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  Icon(
+                                  Icons.notifications,
+                                  size: AppSize.h32,
+                                ),
+                                Obx(() =>
+                                homeController.notificationCount.value > 0
+                                    ? Positioned(
+                                        right: 8,
+                                        top: 7,
+                                        child: CircleAvatar(
+                                          radius: AppRadius.tiny,
+                                          backgroundColor: AppColor.red,
+                                          
+                                        ),
+                                      )
+                                    : SizedBox.shrink()),
+                                ],
+                                 
                               ),
                             ),
-                            Obx(()=>
-                               InkWell(
+                            Obx(
+                              () => InkWell(
                                 onTap: () {
-                                 
                                   authController.signout();
                                 },
                                 child: Container(
                                   width: AppSize.h53,
                                   height: AppSize.h53,
-                                  margin: EdgeInsets.only(right: AppMargin.hm12),
+                                  margin:
+                                      EdgeInsets.only(right: AppMargin.hm12),
                                   decoration: BoxDecoration(
                                       color: AppColor.white,
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
-                                          image:  AssetImage(
+                                          image: AssetImage(
                                               AppAssets.images.profile))),
                                   clipBehavior: Clip.antiAlias,
-                                  child:  authController.isLoading.value ? CustomAppLoader(
-                                    size: AppSize.h40,
-                                    color: AppColor.primary,
-                                  ) : null,
+                                  child: authController.isLoading.value
+                                      ? CustomAppLoader(
+                                          size: AppSize.h40,
+                                          color: AppColor.primary,
+                                        )
+                                      : null,
                                 ),
                               ),
                             ),
@@ -258,7 +280,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: getMediumTextStyle(color: AppColor.black),
                       ),
                       Text(
-                       AppStrings.viewAll,
+                        AppStrings.viewAll,
                         style: getMediumTextStyle(color: AppColor.primary),
                       ),
                     ],
@@ -308,7 +330,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Padding(
-              padding:  EdgeInsets.symmetric(horizontal:  AppPadding.hp12),
+              padding: EdgeInsets.symmetric(horizontal: AppPadding.hp12),
               child: Column(
                 children: [
                   Row(
@@ -327,12 +349,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   Obx(
                     () => homeController.isLoading.value
                         ? Padding(
-                          padding:  EdgeInsets.only(top: AppPadding.vp12),
-                          child: CustomAppLoader(
+                            padding: EdgeInsets.only(top: AppPadding.vp12),
+                            child: CustomAppLoader(
                               size: AppSize.h40,
                               color: AppColor.primary,
                             ),
-                        )
+                          )
                         : ListView.builder(
                             shrinkWrap: true,
                             itemCount: homeController.transactions.length,
@@ -344,10 +366,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 padding: EdgeInsets.all(AppPadding.vp12),
                                 margin: EdgeInsets.all(AppMargin.hm8),
                                 decoration: BoxDecoration(
-                                    color: AppColor.background,
-                                    borderRadius:
-                                        BorderRadius.circular(AppRadius.medium),),
-                                  
+                                  color: AppColor.background,
+                                  borderRadius:
+                                      BorderRadius.circular(AppRadius.medium),
+                                ),
                                 child: Row(
                                   spacing: AppSpacing.hs24,
                                   mainAxisAlignment:

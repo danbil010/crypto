@@ -22,6 +22,7 @@ class HomeController extends GetxController {
 
   RxList<TransactionsModel> transactions = <TransactionsModel>[].obs;
   RxBool isLoading = false.obs;
+  RxInt notificationCount = 2.obs;
 
   @override
   void onInit() {
