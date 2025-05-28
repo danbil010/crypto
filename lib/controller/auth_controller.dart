@@ -34,16 +34,16 @@ class AuthController extends GetxController {
 
   final AuthService _authService = AuthService();
 
-  @override
-  void onClose() {
-    fullNameFocus.dispose();
-    emailFocus.dispose();
+  // @override
+  // void onClose() {
+  //   fullNameFocus.dispose();
+  //   emailFocus.dispose();
     
-    phoneFocus.dispose();
-    passwordFocus.dispose();
-    confirmPasswordFocus.dispose();
-    super.onClose();
-  }
+  //   phoneFocus.dispose();
+  //   passwordFocus.dispose();
+  //   confirmPasswordFocus.dispose();
+  //   super.onClose();
+  // }
 
   Future<void> login() async {
     isLoading.value = true;

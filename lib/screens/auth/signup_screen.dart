@@ -103,6 +103,8 @@ class _SignupScreenState extends State<SignupScreen> {
                         textInputAction: TextInputAction.next,
                         focusNode: authController.passwordFocus,
                         nextFocusNode: authController.confirmPasswordFocus,
+                        
+                        
                       ),
                       CustomTextField(
                         controller: authController.confirmPasswordController,
