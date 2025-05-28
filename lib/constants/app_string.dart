@@ -99,9 +99,20 @@ class AppStrings {
   static const String newToFiacto = "New to Fiacto? ";
 
 
-  // home scree
+  // home screen
   static const String deposit = "Deposit";
   static const String send = "Send";
   static const String convert = "Convert";
   static const String withdraw = "Widthdraw";
+
+  static const String credit = "Credit";
+  static const String debit = "Debit";
+
+  static const String availableBalance = "Available Balance";
+
+  static const String myAssets = "My Assets";
+
+  static const String viewAll = "View All";
+
+  static const String transactions = "Transactions";
 }

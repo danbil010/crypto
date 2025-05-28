@@ -131,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               spacing: AppSpacing.hs24,
                               children: [
                                 Text(
-                                  'Credit',
+                                  AppStrings.credit,
                                   style:
                                       getMediumTextStyle(color: AppColor.white),
                                 ),
@@ -163,7 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'Available Balance',
+                                      AppStrings.availableBalance,
                                       style: getSmallTextStyle(
                                           color: AppColor.white),
                                     ),
@@ -240,11 +240,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Me Assets',
+                        AppStrings.myAssets,
                         style: getMediumTextStyle(color: AppColor.black),
                       ),
                       Text(
-                        'View All',
+                       AppStrings.viewAll,
                         style: getMediumTextStyle(color: AppColor.primary),
                       ),
                     ],
@@ -301,21 +301,24 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Transactions',
+                        AppStrings.transactions,
                         style: getMediumTextStyle(color: AppColor.black),
                       ),
                       Text(
-                        'View All',
+                        AppStrings.viewAll,
                         style: getMediumTextStyle(color: AppColor.primary),
                       ),
                     ],
                   ),
                   Obx(
                     () => homeController.isLoading.value
-                        ? CustomAppLoader(
-                            size: AppSize.h40,
-                            color: AppColor.primary,
-                          )
+                        ? Padding(
+                          padding:  EdgeInsets.only(top: AppPadding.vp12),
+                          child: CustomAppLoader(
+                              size: AppSize.h40,
+                              color: AppColor.primary,
+                            ),
+                        )
                         : ListView.builder(
                             shrinkWrap: true,
                             itemCount: homeController.transactions.length,
