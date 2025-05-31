@@ -2,7 +2,7 @@ import 'package:crypto_app/constants/app_string.dart';
 import 'package:crypto_app/local/shared_preference_helper.dart';
 import 'package:crypto_app/screens/auth/login_screen.dart';
 import 'package:crypto_app/screens/dashboard_screen.dart';
-import 'package:crypto_app/services/auth_service.dart'; // Make sure this import is correct
+import 'package:crypto_app/services/auth_service.dart'; 
 import 'package:crypto_app/utils/snackbar_helper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
