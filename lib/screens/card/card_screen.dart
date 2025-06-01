@@ -22,7 +22,7 @@ class CardScreen extends StatelessWidget {
           spacing: AppSpacing.vs24,
           children: [
             Expanded(
-              flex: 10,
+              flex: 9,
               child: Center(
                 child: Text('Card Screen'),
               ),
@@ -37,7 +37,7 @@ class CardScreen extends StatelessWidget {
                     isOutlined: cartController.isLoading.value ? true : false,
                     text: 'Pay with Stripe',
                     onPressed: () {
-                     cartController.stripePayment();
+                      cartController.stripePayment();
                     },
                   ),
                 ),

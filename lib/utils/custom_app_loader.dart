@@ -43,10 +43,10 @@ class _CustomAppLoaderState extends State<CustomAppLoader>
         child: AnimatedBuilder(
           animation: _controller,
           builder: (context, child) {
-            return Transform.rotate(
-              angle: _controller.value * 2 * math.pi,
-              child: CustomPaint(
-                painter: _LoaderPainter(widget.color),
+            return CustomPaint(
+              painter: _LoaderPainter(
+                widget.color,
+                _controller.value,
               ),
             );
           },
@@ -58,8 +58,9 @@ class _CustomAppLoaderState extends State<CustomAppLoader>
 
 class _LoaderPainter extends CustomPainter {
   final Color color;
+  final double progress;
 
-  _LoaderPainter(this.color);
+  _LoaderPainter(this.color, this.progress);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -71,15 +72,20 @@ class _LoaderPainter extends CustomPainter {
 
     final double radius = size.width / 2;
     final Offset center = Offset(radius, radius);
+
+    final double startAngle = 2 * math.pi * progress - math.pi / 2;
+    const double sweepAngle = 2 * math.pi * 0.70;
+
     canvas.drawArc(
       Rect.fromCircle(center: center, radius: radius),
-      -math.pi / 2,
-      2 * math.pi * 0.75,
+      startAngle,
+      sweepAngle,
       false,
       paint,
     );
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant _LoaderPainter oldDelegate) =>
+      oldDelegate.progress != progress || oldDelegate.color != color;
 }

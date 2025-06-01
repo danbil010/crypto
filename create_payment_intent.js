@@ -1,5 +1,6 @@
 // create_payment_intent.js
-
+require('dotenv').config();
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 (async () => {
   try {
     const paymentIntent = await stripe.paymentIntents.create({

@@ -86,8 +86,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           spacing: AppSpacing.hs24,
                           children: [
                             Container(
-                               width: AppSize.h53,
-                              height: AppSize.h53,
+                              width: AppSize.h55,
+                              height: AppSize.h55,
                               decoration: BoxDecoration(
                                   color: AppColor.white,
                                   shape: BoxShape.circle),
@@ -95,23 +95,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                 alignment: Alignment.center,
                                 children: [
                                   Icon(
-                                  Icons.notifications,
-                                  size: AppSize.h32,
-                                ),
-                                Obx(() =>
-                                homeController.notificationCount.value > 0
-                                    ? Positioned(
-                                        right: 8,
-                                        top: 7,
-                                        child: CircleAvatar(
-                                          radius: AppRadius.tiny,
-                                          backgroundColor: AppColor.red,
-                                          
-                                        ),
-                                      )
-                                    : SizedBox.shrink()),
+                                    Icons.notifications,
+                                    size: AppSize.h32,
+                                  ),
+                                  Obx(() =>
+                                      homeController.notificationCount.value > 0
+                                          ? Positioned(
+                                              right: 8,
+                                              top: 7,
+                                              child: CircleAvatar(
+                                                radius: AppRadius.tiny,
+                                                backgroundColor: AppColor.red,
+                                              ),
+                                            )
+                                          : SizedBox.shrink()),
                                 ],
-                                 
                               ),
                             ),
                             Obx(
@@ -269,7 +267,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Padding(
-              padding:  EdgeInsets.symmetric(horizontal:  AppPadding.hp12, vertical: AppPadding.vp8),
+              padding: EdgeInsets.symmetric(
+                  horizontal: AppPadding.hp12, vertical: AppPadding.vp8),
               child: Column(
                 spacing: AppSpacing.vs8,
                 children: [

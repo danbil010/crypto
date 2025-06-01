@@ -19,7 +19,7 @@ class DashboardScreen extends StatelessWidget {
     if (_selectedIndex.value != index) {
       // Delete previous screen controllers
       if (_selectedIndex.value == 1) {
-        Get.delete<DashboardScreen>();
+      //  Get.delete<DashboardScreen>();
       } else if (_selectedIndex.value == 2) {
         //  Get.delete<UserReportController>();
       } 

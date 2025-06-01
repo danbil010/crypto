@@ -42,8 +42,9 @@ android {
         minifyEnabled true
         shrinkResources true
         proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
+       }
     }
+
 
 
 }
@@ -54,5 +55,5 @@ flutter {
 
 
 dependencies {
-    implementation 'com.stripe:stripe-android:20.28.0'  // or latest stable version
+    implementation 'com.stripe:stripe-android:20.28.0' 
 }
